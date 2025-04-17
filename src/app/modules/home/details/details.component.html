@@ -1,0 +1,341 @@
+<div class="product-container">
+    <div *ngIf="productDetails" class="row">
+      <!-- Product Image -->
+      <div class="col-md-6">
+        <img [src]="productDetails?.image_url" class="card-img card-img-top"  alt="Google Pixel 8a">
+      </div>
+  
+      <!-- Product Details and Pricing -->
+      <div class="col-md-6">
+        <h2>{{productDetails?.name}}</h2>
+        <div class="ratings">
+          <span>{{productDetails?.rating}} ★</span>
+          <span>(4,063 Ratings & 360 Reviews)</span>
+        </div>
+        <div class="pricing">
+          <p class="price">After Discount: $ {{(productDetails?.price - (productDetails?.price * 0.10)) | number:'1.2-2'}}</p>
+          <p class="original-price">Actual Price: {{productDetails?.price | currency }}</p>
+          <p class="discount">Discount: 10% off</p>
+        </div>
+  
+        <div class="offers">
+          <h4>Available Offers</h4>
+          <ul>
+            <li>Bank Offer ₹1000 Off On All Banks Credit And Debit Card EMI Transactions.</li>
+            <li>Bank Offer ₹1000 Off On Flipkart Axis Bank Credit Card Non EMI Transactions.</li>
+            <li>Bank Offer 5% Unlimited Cashback on Flipkart Axis Bank Credit Card.</li>
+            <li>Special Price Get extra ₹15,000 off (price inclusive of cashback/coupon)</li>
+          </ul>
+        </div>
+  
+        <div class="exchange-option">
+            <button class="btn btn-primary" (click)="onBuyClick()" >Buy Now</button>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="specifications-container">
+        <h2>Specifications</h2>
+      
+        <div class="specifications-section">
+          <h3>General</h3>
+          <table class="specifications-table">
+            <tr>
+              <th>In The Box</th>
+              <td>{{productDetails?.additionalJson?.inTheBox}}</td>
+            </tr>
+            <tr>
+              <th>Model Number</th>
+              <td>{{productDetails?.additionalJson?.modelNumber}}</td>
+            </tr>
+            <tr>
+              <th>Model Name</th>
+              <td>{{productDetails?.additionalJson?.modelName}}</td>
+            </tr>
+            <tr>
+              <th>Color</th>
+              <td>{{productDetails?.additionalJson?.color}}</td>
+            </tr>
+            <tr>
+              <th>Browse Type</th>
+              <td>{{productDetails?.additionalJson?.browseType}}</td>
+            </tr>
+            <tr>
+              <th>SIM Type</th>
+              <td>{{productDetails?.additionalJson?.simType}}</td>
+            </tr>
+            <tr>
+              <th>Hybrid Sim Slot</th>
+              <td>{{productDetails?.additionalJson?.hybridSimSlot}}</td>
+            </tr>
+            <tr>
+              <th>Touchscreen</th>
+              <td>{{productDetails?.additionalJson?.touchscreen}}</td>
+            </tr>
+            <tr>
+              <th>OTG Compatible</th>
+              <td>{{productDetails?.additionalJson?.otgCompatible}}</td>
+            </tr>
+            <tr>
+              <th>Quick Charging</th>
+              <td>{{productDetails?.additionalJson?.quickCharging}}</td>
+            </tr>
+          </table>
+        </div>
+      
+        <div class="specifications-section">
+          <h3>Display Features</h3>
+          <table class="specifications-table">
+            <tr>
+              <th>Display Size</th>
+              <td>{{productDetails?.additionalJson?.displaySize}}</td>
+            </tr>
+            <tr>
+              <th>Resolution</th>
+              <td>{{productDetails?.additionalJson?.resolution}}</td>
+            </tr>
+            <tr>
+              <th>Resolution Type</th>
+              <td>{{productDetails?.additionalJson?.resolutionType}}</td>
+            </tr>
+            <tr>
+              <th>Display Colors</th>
+              <td>{{productDetails?.additionalJson?.displayColors}}</td>
+            </tr>
+            <tr>
+              <th>Other Display Features</th>
+              <td>{{productDetails?.additionalJson?.otherDisplayFeatures}}</td>
+            </tr>
+          </table>
+        </div>
+      
+        <div class="specifications-section">
+          <h3>Os & Processor Features</h3>
+          <table class="specifications-table">
+            <tr>
+              <th>Operating System</th>
+              <td>{{productDetails?.additionalJson?.operatingSystem}}</td>
+            </tr>
+            <tr>
+              <th>Processor Brand</th>
+              <td>{{productDetails?.additionalJson?.processorBrand}}</td>
+            </tr>
+            <tr>
+              <th>Processor Type</th>
+              <td>{{productDetails?.additionalJson?.processorType}}</td>
+            </tr>
+            <tr>
+              <th>Operating Frequency</th>
+              <td>{{productDetails?.additionalJson?.operatingFrequency}}</td>
+            </tr>
+          </table>
+        </div>
+      
+        <div class="specifications-section">
+          <h3>Memory & Storage Features</h3>
+          <table class="specifications-table">
+            <tr>
+              <th>Internal Storage</th>
+              <td>{{productDetails?.additionalJson?.internalStorage}}</td>
+            </tr>
+            <tr>
+              <th>RAM</th>
+              <td>{{productDetails?.additionalJson?.ram}}</td>
+            </tr>
+            <tr>
+              <th>Total Memory</th>
+              <td>{{productDetails?.additionalJson?.totalMemory}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      
+
+
+
+
+
+      <div class="specifications-container">
+        <h2>Specifications</h2>
+      
+        <!-- Camera Features Section -->
+        <div class="specifications-section">
+          <h3>Camera Features</h3>
+          <table class="specifications-table">
+            <tr>
+              <th>Primary Camera Available</th>
+              <td>{{productDetails?.additionalJson?.primaryCameraAvailable}}</td>
+            </tr>
+            <tr>
+              <th>Primary Camera</th>
+              <td>{{productDetails?.additionalJson?.primaryCamera}}</td>
+            </tr>
+            <tr>
+              <th>Primary Camera Features</th>
+              <td>{{productDetails?.additionalJson?.primaryCameraFeatures}}</td>
+            </tr>
+            <tr>
+              <th>Optical Zoom</th>
+              <td>{{productDetails?.additionalJson?.opticalZoom}}</td>
+            </tr>
+            <tr>
+              <th>Secondary Camera Available</th>
+              <td>{{productDetails?.additionalJson?.secondaryCameraAvailable}}</td>
+            </tr>
+            <tr>
+              <th>Secondary Camera</th>
+              <td>{{productDetails?.additionalJson?.secondaryCamera}}</td>
+            </tr>
+            <tr>
+              <th>Flash</th>
+              <td>{{productDetails?.additionalJson?.flash}}</td>
+            </tr>
+            <tr>
+              <th>Video Recording Resolution</th>
+              <td>{{productDetails?.additionalJson?.videoRecordingResolution}}</td>
+            </tr>
+            <tr>
+              <th>Digital Zoom</th>
+              <td>{{productDetails?.additionalJson?.digitalZoom}}</td>
+            </tr>
+            <tr>
+              <th>Frame Rate</th>
+              <td>{{productDetails?.additionalJson?.frameRate}}</td>
+            </tr>
+            <tr>
+              <th>Image Editor</th>
+              <td>{{productDetails?.additionalJson?.imageEditor}}</td>
+            </tr>
+            <tr>
+              <th>Dual Camera Lens</th>
+              <td>{{productDetails?.additionalJson?.dualCameraLens}}</td>
+            </tr>
+          </table>
+        </div>
+      
+        <!-- Connectivity Features Section -->
+        <div class="specifications-section">
+          <h3>Connectivity Features</h3>
+          <table class="specifications-table">
+            <tr>
+              <th>Network Type</th>
+              <td>{{productDetails?.additionalJson?.networkType}}</td>
+            </tr>
+            <tr>
+              <th>Supported Networks</th>
+              <td>{{productDetails?.additionalJson?.supportedNetworks}}</td>
+            </tr>
+            <tr>
+              <th>Bluetooth Support</th>
+              <td>{{productDetails?.additionalJson?.bluetoothSupport}}</td>
+            </tr>
+            <tr>
+              <th>Bluetooth Version</th>
+              <td>{{productDetails?.additionalJson?.bluetoothVersion}}</td>
+            </tr>
+            <tr>
+              <th>Wi-Fi</th>
+              <td>{{productDetails?.additionalJson?.wiFi}}</td>
+            </tr>
+            <tr>
+              <th>Wi-Fi Hotspot</th>
+              <td>{{productDetails?.additionalJson?.wifiHotspot}}</td>
+            </tr>
+            <tr>
+              <th>NFC</th>
+              <td>{{productDetails?.additionalJson?.nfc}}</td>
+            </tr>
+            <tr>
+              <th>USB Connectivity</th>
+              <td>{{productDetails?.additionalJson?.usbConnectivity}}</td>
+            </tr>
+          </table>
+        </div>
+      
+        <!-- Other Details Section -->
+        <div class="specifications-section">
+          <h3>Other Details</h3>
+          <table class="specifications-table">
+            <tr>
+              <th>Smartphone</th>
+              <td>{{productDetails?.additionalJson?.smartphone}}</td>
+            </tr>
+            <tr>
+              <th>SIM Size</th>
+              <td>{{productDetails?.additionalJson?.simSize}}</td>
+            </tr>
+            <tr>
+              <th>Voice Input</th>
+              <td>{{productDetails?.additionalJson?.voiceInput}}</td>
+            </tr>
+            <tr>
+              <th>Graphics PPI</th>
+              <td>{{productDetails?.additionalJson?.graphicsPpi}}</td>
+            </tr>
+            <tr>
+              <th>Sensors</th>
+              <td>{{productDetails?.additionalJson?.sensors}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      
+
+
+      <div class="specifications-container">
+        <h2>Specifications</h2>
+      
+        <!-- Battery & Power Features Section -->
+        <div class="specifications-section">
+          <h3>Battery & Power Features</h3>
+          <table class="specifications-table">
+            <tr>
+              <th>Battery Capacity</th>
+              <td>{{productDetails?.additionalJson?.batteryCapacity}}</td>
+            </tr>
+          </table>
+        </div>
+      
+        <!-- Dimensions Section -->
+        <div class="specifications-section">
+          <h3>Dimensions</h3>
+          <table class="specifications-table">
+            <tr>
+              <th>Width</th>
+              <td>{{productDetails?.additionalJson?.width}}</td>
+            </tr>
+            <tr>
+              <th>Height</th>
+              <td>{{productDetails?.additionalJson?.height}}</td>
+            </tr>
+            <tr>
+              <th>Depth</th>
+              <td>{{productDetails?.additionalJson?.depth}}</td>
+            </tr>
+            <tr>
+              <th>Weight</th>
+              <td>{{productDetails?.additionalJson?.weight}}</td>
+            </tr>
+          </table>
+        </div>
+      
+        <!-- Warranty Section -->
+        <div class="specifications-section">
+          <h3>Warranty</h3>
+          <table class="specifications-table">
+            <tr>
+              <th>Warranty Summary</th>
+              <td>{{productDetails?.additionalJson?.warrantySummary}}</td>
+            </tr>
+            <tr>
+              <th>Domestic Warranty</th>
+              <td>{{productDetails?.additionalJson?.domesticWarranty}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      
+  </div>

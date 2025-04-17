@@ -1,0 +1,563 @@
+<div class="container mt-4">
+ 
+<!-- Add Product Button -->
+<button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#addProductModal" (click)="operation='ADD'" >
+    + Add Product
+  </button>
+  
+  <!-- Add Product Modal -->
+  <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title" id="addProductModalLabel">Add Product</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body m-5">
+          <form [formGroup]="addProductForm" (ngSubmit)="operation=='ADD' ? addProduct() : updateProduct()">
+            <div class="row g-2">
+              <div class="col-md-4">
+                <label>Product Image <span style="color: red;">*</span></label>
+                <input type="file" class="form-control" (change)="onFileSelected($event)" accept="image/*">
+              </div>
+              <div class="col-md-4">
+                <label>Product Name <span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="name" required>
+                <div *ngIf="addProductForm.get('name')?.invalid && addProductForm.get('name')?.touched" class="text-danger">
+                  Product name is required.
+                </div>
+              </div>
+              <div class="col-md-4">
+                <label>Category <span style="color: red;">*</span></label>
+                <select class="form-select" formControlName="category">
+                  <option value="" disabled selected>Select a category</option>
+                  <option *ngFor="let option of categories" [value]="option.value">{{ option.label }}</option>
+                </select>
+                <div *ngIf="addProductForm.get('category')?.invalid && addProductForm.get('category')?.touched" class="text-danger">
+                  Category is required.
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label>Description <span style="color: red;">*</span></label>
+                <textarea class="form-control" formControlName="description" required></textarea>
+                <div *ngIf="addProductForm.get('description')?.invalid && addProductForm.get('description')?.touched" class="text-danger">
+                  Description is required.
+                </div>
+              </div>
+              <div class="col-md-3">
+                <label>Price ($) <span style="color: red;">*</span></label>
+                <input type="number" class="form-control" formControlName="price" required>
+                <div *ngIf="addProductForm.get('price')?.invalid && addProductForm.get('price')?.touched" class="text-danger">
+                  Valid price is required.
+                </div>
+              </div>
+              <div class="col-md-3">
+                <label>Quantity <span style="color: red;">*</span></label>
+                <input type="number" class="form-control" formControlName="stock" required>
+                <div *ngIf="addProductForm.get('stock')?.invalid && addProductForm.get('stock')?.touched" class="text-danger">
+                  Valid quantity is required.
+                </div>
+              </div>
+
+
+
+              <!-- General -->
+              <h5>General</h5>
+              <div class="col-md-4">
+                <label>In The Box	<span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="inTheBox" required>
+                <div *ngIf="addProductForm.get('inTheBox')?.invalid && addProductForm.get('inTheBox')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <label>Model Number <span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="modelNumber" required>
+                <div *ngIf="addProductForm.get('modelNumber')?.invalid && addProductForm.get('modelNumber')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+    
+              <div class="col-md-4">
+                <label>Model Name <span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="modelName" required>
+                <div *ngIf="addProductForm.get('modelName')?.invalid && addProductForm.get('modelName')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+    
+              <div class="col-md-4">
+                <label>Color <span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="color" required>
+                <div *ngIf="addProductForm.get('color')?.invalid && addProductForm.get('color')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <label>Browse Type <span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="browseType" required>
+                <div *ngIf="addProductForm.get('browseType')?.invalid && addProductForm.get('browseType')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+    
+              <div class="col-md-4">
+                <label>SIM Type <span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="simType" required>
+                <div *ngIf="addProductForm.get('simType')?.invalid && addProductForm.get('simType')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+    
+              <div class="col-md-4">
+                <label>Hybrid SIM Slot <span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="hybridSimSlot" required>
+                <div *ngIf="addProductForm.get('hybridSimSlot')?.invalid && addProductForm.get('hybridSimSlot')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+    
+              <div class="col-md-4">
+                <label>Touchscreen <span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="touchscreen" required>
+                <div *ngIf="addProductForm.get('touchscreen')?.invalid && addProductForm.get('touchscreen')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <label>OTG Compatible	<span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="otgCompatible" required>
+                <div *ngIf="addProductForm.get('otgCompatible')?.invalid && addProductForm.get('otgCompatible')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+              <div class="col-md-4">
+                <label>Quick Charging	<span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="quickCharging" required>
+                <div *ngIf="addProductForm.get('quickCharging')?.invalid && addProductForm.get('quickCharging')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+
+              <h5> Display Features </h5>
+
+              <div class="col-md-4">
+                <label>Display Size	<span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="displaySize" required>
+                <div *ngIf="addProductForm.get('displaySize')?.invalid && addProductForm.get('displaySize')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+    
+              <div class="col-md-4">
+                <label>Resolution <span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="resolution" required>
+                <div *ngIf="addProductForm.get('resolution')?.invalid && addProductForm.get('resolution')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+    
+              <div class="col-md-4">
+                <label>Resolution Type	<span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="resolutionType" required>
+                <div *ngIf="addProductForm.get('resolutionType')?.invalid && addProductForm.get('resolutionType')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+    
+              <div class="col-md-4">
+                <label>Display Colors	<span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="displayColors" required>
+                <div *ngIf="addProductForm.get('displayColors')?.invalid && addProductForm.get('displayColors')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+    
+              <div class="col-md-4">
+                <label>Other Display Features <span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="otherDisplayFeatures" required>
+                <div *ngIf="addProductForm.get('otherDisplayFeatures')?.invalid && addProductForm.get('otherDisplayFeatures')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+
+
+              <h5> Os & Processor Features </h5>
+              <div class="col-md-4">
+                <label>Operating System	<span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="operatingSystem" required>
+                <div *ngIf="addProductForm.get('operatingSystem')?.invalid && addProductForm.get('operatingSystem')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+    
+              <div class="col-md-4">
+                <label>Processor Brand	<span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="processorBrand" required>
+                <div *ngIf="addProductForm.get('processorBrand')?.invalid && addProductForm.get('processorBrand')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+    
+              <div class="col-md-4">
+                <label>Processor Type <span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="processorType" required>
+                <div *ngIf="addProductForm.get('processorType')?.invalid && addProductForm.get('processorType')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+    
+              <div class="col-md-4">
+                <label>Operating Frequency	<span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="operatingFrequency" required>
+                <div *ngIf="addProductForm.get('operatingFrequency')?.invalid && addProductForm.get('operatingFrequency')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+
+
+              <h5>Memory & Storage Features</h5>
+              <div class="col-md-4">
+                <label>Internal Storage	<span style="color: red;">*</span>	</label>
+                <input type="text" class="form-control" formControlName="internalStorage" required>
+                <div *ngIf="addProductForm.get('internalStorage')?.invalid && addProductForm.get('internalStorage')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+    
+              <div class="col-md-4">
+                <label>RAM <span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="ram" required>
+                <div *ngIf="addProductForm.get('ram')?.invalid && addProductForm.get('ram')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+    
+              <div class="col-md-4">
+                <label>Total Memory	<span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="totalMemory" required>
+                <div *ngIf="addProductForm.get('totalMemory')?.invalid && addProductForm.get('totalMemory')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+
+
+              <h5>Camera Features</h5>
+              <div class="col-md-4">
+                <label>Primary Camera Available <span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="primaryCameraAvailable" required>
+                <div *ngIf="addProductForm.get('primaryCameraAvailable')?.invalid && addProductForm.get('primaryCameraAvailable')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <label>Primary Camera	<span style="color: red;">*</span>	</label>
+                <input type="text" class="form-control" formControlName="primaryCamera" required>
+                <div *ngIf="addProductForm.get('primaryCamera')?.invalid && addProductForm.get('primaryCamera')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+    
+              <div class="col-md-4">
+                <label>Primary Camera Features <span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="primaryCameraFeatures" required>
+                <div *ngIf="addProductForm.get('primaryCameraFeatures')?.invalid && addProductForm.get('primaryCameraFeatures')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+    
+              <div class="col-md-4">
+                <label>Optical Zoom	<span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="opticalZoom" required>
+                <div *ngIf="addProductForm.get('opticalZoom')?.invalid && addProductForm.get('opticalZoom')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+              <div class="col-md-4">
+                <label>Secondary Camera Available <span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="secondaryCameraAvailable" required>
+                <div *ngIf="addProductForm.get('secondaryCameraAvailable')?.invalid && addProductForm.get('secondaryCameraAvailable')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+
+
+              <div class="col-md-4">
+                <label>Secondary Camera	<span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="secondaryCamera" required>
+                <div *ngIf="addProductForm.get('secondaryCamera')?.invalid && addProductForm.get('secondaryCamera')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+    
+              <div class="col-md-4">
+                <label>Flash <span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="flash" required>
+                <div *ngIf="addProductForm.get('flash')?.invalid && addProductForm.get('flash')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+    
+              <div class="col-md-4">
+                <label>Video Recording Resolution <span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="videoRecordingResolution" required>
+                <div *ngIf="addProductForm.get('videoRecordingResolution')?.invalid && addProductForm.get('videoRecordingResolution')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+              <div class="col-md-4">
+                <label>Digital Zoom	<span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="digitalZoom" required>
+                <div *ngIf="addProductForm.get('digitalZoom')?.invalid && addProductForm.get('digitalZoom')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+
+
+              <div class="col-md-4">
+                <label>Frame Rate	<span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="frameRate" required>
+                <div *ngIf="addProductForm.get('frameRate')?.invalid && addProductForm.get('frameRate')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+    
+              <div class="col-md-4">
+                <label>Image Editor	<span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="imageEditor" required>
+                <div *ngIf="addProductForm.get('imageEditor')?.invalid && addProductForm.get('imageEditor')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+    
+              <div class="col-md-4">
+                <label>Dual Camera Lens	<span style="color: red;">*</span>	</label>
+                <input type="text" class="form-control" formControlName="dualCameraLens" required>
+                <div *ngIf="addProductForm.get('dualCameraLens')?.invalid && addProductForm.get('dualCameraLens')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+
+              <h5> Connectivity Features </h5>
+
+              <div class="col-md-4">
+                <label>Network Type <span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="networkType" required>
+                <div *ngIf="addProductForm.get('networkType')?.invalid && addProductForm.get('networkType')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+    
+              <div class="col-md-4">
+                <label>Supported Networks	<span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="supportedNetworks" required>
+                <div *ngIf="addProductForm.get('supportedNetworks')?.invalid && addProductForm.get('supportedNetworks')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+    
+              <div class="col-md-4">
+                <label>Bluetooth Support <span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="bluetoothSupport" required>
+                <div *ngIf="addProductForm.get('bluetoothSupport')?.invalid && addProductForm.get('bluetoothSupport')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+    
+              <div class="col-md-4">
+                <label>Bluetooth Version <span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="bluetoothVersion" required>
+                <div *ngIf="addProductForm.get('bluetoothVersion')?.invalid && addProductForm.get('bluetoothVersion')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+    
+              <div class="col-md-4">
+                <label>Wi-Fi <span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="wiFi" required>
+                <div *ngIf="addProductForm.get('wiFi')?.invalid && addProductForm.get('wiFi')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+              <div class="col-md-4">
+                <label>Wi-Fi Hotspot <span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="wifiHotspot" required>
+                <div *ngIf="addProductForm.get('wifiHotspot')?.invalid && addProductForm.get('wifiHotspot')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+    
+              <div class="col-md-4">
+                <label>NFC <span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="nfc" required>
+                <div *ngIf="addProductForm.get('nfc')?.invalid && addProductForm.get('nfc')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+    
+              <div class="col-md-4">
+                <label>USB Connectivity	<span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="usbConnectivity" required>
+                <div *ngIf="addProductForm.get('usbConnectivity')?.invalid && addProductForm.get('usbConnectivity')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+
+              <h5>Other Details</h5>
+              <div class="col-md-4">
+                <label>Smartphone <span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="smartphone" required>
+                <div *ngIf="addProductForm.get('smartphone')?.invalid && addProductForm.get('smartphone')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+    
+              <div class="col-md-4">
+                <label>SIM Size <span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="simSize" required>
+                <div *ngIf="addProductForm.get('simSize')?.invalid && addProductForm.get('simSize')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+    
+              <div class="col-md-4">
+                <label>Voice Input	<span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="voiceInput" required>
+                <div *ngIf="addProductForm.get('voiceInput')?.invalid && addProductForm.get('voiceInput')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+              <div class="col-md-4">
+                <label>Graphics PPI	<span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="graphicsPpi" required>
+                <div *ngIf="addProductForm.get('graphicsPpi')?.invalid && addProductForm.get('graphicsPpi')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+    
+              <div class="col-md-4">
+                <label>Sensors <span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="sensors" required>
+                <div *ngIf="addProductForm.get('sensors')?.invalid && addProductForm.get('sensors')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+              
+              <h5>Battery & Power Features</h5>
+              <div class="col-md-4">
+                <label>Battery Capacity	<span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="batteryCapacity" required>
+                <div *ngIf="addProductForm.get('batteryCapacity')?.invalid && addProductForm.get('batteryCapacity')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+
+              <h5>Dimensions</h5>
+              <div class="col-md-4">
+                <label>Width <span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="width" required>
+                <div *ngIf="addProductForm.get('width')?.invalid && addProductForm.get('width')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+              <div class="col-md-4">
+                <label>Height <span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="height" required>
+                <div *ngIf="addProductForm.get('height')?.invalid && addProductForm.get('height')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+              <div class="col-md-4">
+                <label>Depth <span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="depth" required>
+                <div *ngIf="addProductForm.get('depth')?.invalid && addProductForm.get('depth')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+              <div class="col-md-4">
+                <label>Weight	<span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="weight" required>
+                <div *ngIf="addProductForm.get('weight')?.invalid && addProductForm.get('weight')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+
+              <h5>Warranty </h5>
+              <div class="col-md-4">
+                <label>Warranty Summary	<span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="warrantySummary" required>
+                <div *ngIf="addProductForm.get('warrantySummary')?.invalid && addProductForm.get('warrantySummary')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+              <div class="col-md-4">
+                <label>Domestic Warranty <span style="color: red;">*</span></label>
+                <input type="text" class="form-control" formControlName="domesticWarranty" required>
+                <div *ngIf="addProductForm.get('domesticWarranty')?.invalid && addProductForm.get('domesticWarranty')?.touched" class="text-danger">
+                  Field is required.
+                </div>
+              </div>
+
+            </div>
+            <div class="mt-4 d-flex justify-content-end">
+              <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">Cancel</button>
+              <button *ngIf="operation=='ADD'" type="submit" class="btn btn-primary" [disabled]="addProductForm.invalid">Add Product</button>
+              <button *ngIf="operation=='EDIT'" type="submit" class="btn btn-primary" [disabled]="addProductForm.invalid">Edit Product</button>
+
+              <!-- [disabled]="addProductForm.invalid" -->
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  
+    <!-- Recent Orders Table -->
+    <div class="card mt-4">
+        <div class="card-header bg-dark text-white">
+            Products
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Product Name</th>
+                        <th>Product Description</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th>Remove</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of products; let i = index">
+                        <td><img [src]="product?.image_url" class="product-img" alt="Product">
+                        </td>
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.description }}</td>
+                        <td>{{ product.category }}</td>
+                        <td>${{ product.price }}</td>
+                        <td>{{ product.stock }}</td>
+                        <td>${{ product.price * product.stock }}</td>
+                        <td>
+                            <button class="btn btn-sm btn-danger" (click)="removeProduct(i, product.id)">
+                                <i class="bi bi-x"></i>
+                            </button>
+                            <button class="btn btn-sm btn-warning m-3" data-bs-toggle="modal" data-bs-target="#addProductModal" (click)="editProduct(product.id)">
+                              <i class="bi bi-pencil"></i>
+                          </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

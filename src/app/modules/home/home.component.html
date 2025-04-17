@@ -1,0 +1,117 @@
+<section class="hero-section">
+    <div class="hero-text">
+        <h1>Discover the Latest Smartphones</h1>
+        <p>Experience cutting-edge technology with our wide selection of premium smartphones.</p>
+        <div class="cta-buttons">
+            <button class="shop-btn" (click)="showNow()" >Shop Now</button>
+            <button class="compare-btn" (click)="myOrders()" >My Orders</button>
+        </div>
+    </div>
+    <div class="hero-image">
+        <img src="https://res.cloudinary.com/ddloau4ca/image/upload/v1744836501/kznee4nnkazxahbmqemr.jpg" class="img-fluid rounded shadow" alt="Smartphone">
+    </div>
+</section>
+
+<div class="container p-0">
+
+<!-- Discover Section -->
+
+<!-- Browse by Category Section -->
+<section class="browse-category-section text-center align-items-center">
+    <h2>Browse by Category</h2>
+    <div class="row m-lg-5 m-sm-5 g-4 justify-content-center"> <!-- Added g-4 for responsive grid spacing -->
+        <div class="col-12 col-md-3 col-sm-6"> <!-- Full width on small screens, 3 columns on medium and above -->
+            <div class="card">
+                <div class="card-body">
+                    <i class="bi bi-phone-fill category-icon"></i>
+                    <h5 class="card-title">Flagship Phones</h5>
+                    <p>Premium devices with cutting-edge features</p>
+                </div>
+            </div>
+        </div> 
+        <div class="col-12 col-md-3 col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <i class="bi bi-battery-full category-icon"></i>
+                    <h5 class="card-title">Long Battery Life</h5>
+                    <p>Phones that last all day and beyond</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-3 col-sm-6" >
+            <div class="card">
+                <div class="card-body">
+                    <i class="bi bi-camera-fill category-icon"></i>
+                    <h5 class="card-title">Camera Phones</h5>
+                    <p>For photography enthusiasts</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-3 col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <i class="bi bi-wallet category-icon"></i>
+                    <h5 class="card-title">Budget Friendly</h5>
+                    <p>Great value for money options</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Popular Products Section -->
+<!-- <section class="popular-products-section">
+    <h2 class="text-center">Popular Right Now</h2>
+    <div class="row">
+        <div class="col-12 col-md-2 col-sm-6" *ngFor="let item of products">
+            <div class="card" (click)="onMobileClicked(item.id)">
+                <img [src]="base_url + item.image_url" class="card-img-top" alt="Product Image">
+                <div class="card-body">
+                    <h5 class="card-title">{{item.name}}</h5>
+                    <p>{{item.price}}</p>
+
+                    <button class="btn btn-primary">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+
+
+<!-- Popular Products Section -->
+<section class="popular-products-section py-5">
+    <h2 class="text-center">Popular Right Now</h2>
+    <div class="row m-lg-5 m-sm-5" >
+        <div class="col-12 col-md-2 col-sm-6" *ngFor="let item of displayedProducts ">
+            <div class="card" (click)="onMobileClicked(item.id)">
+                <!-- Product Image -->
+                <img [src]="item.image_url" class="card-img-top" alt="Product Image">
+                
+                <div class="card-body">
+                    <!-- Product Name and Rating -->
+                    <h5 class="card-title">{{item.name}}</h5>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐</span> 
+                        <!-- <span class="rating-count">({{item.rating}})</span> -->
+                    </div>
+
+                    <!-- Price with Discount -->
+                    <p class="product-price">
+                        <span class="price">${{ (item.price - (item.price * 0.10)) | number:'1.2-2' }}</span>
+                        <span class="original-price">${{item.price}}</span> <br>
+                        <span class="discount-label">10% off</span>
+                        <span class="discount-label">Quantity: {{item.stock}}</span>
+                    </p>
+                    
+                    <!-- Add to Cart Button -->
+                    <button class="btn btn-primary" (click)="addToCart($event, item.id)">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+</div>

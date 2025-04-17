@@ -1,0 +1,92 @@
+
+<!-- Navbar -->
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="#">
+            <img src="https://via.placeholder.com/150x40" alt="Logo" height="40"> MobileMart
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul *ngIf="!isAdmin" class="navbar-nav mx-auto">
+                <li class="nav-item"><a class="nav-link active" href="home">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Shop</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Categories</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+            </ul>
+
+            <ul *ngIf="isAdmin" class="navbar-nav mx-auto">
+                <li class="nav-item"><a class="nav-link active" href="admin/dashboard">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="admin/products">Products</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Categories</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+            </ul>
+
+            <div class="d-flex align-items-center">
+                <input class="form-control me-2 d-none d-lg-block" type="search" placeholder="Search..." aria-label="Search">
+                <a href="#" class="btn btn-outline-dark me-2">
+                    <i class="bi bi-cart"></i> Cart
+                </a>
+                <a (click)="onLogOutClick()" class="btn btn-primary">
+                    <i class="bi bi-person"></i> LogOut
+                </a>
+            </div>
+        </div>
+    </div>
+</nav> -->
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="#">MobileMart</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul *ngIf="!isAdmin" class="navbar-nav ms-auto">
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" routerLink="/home" routerLinkActiveOptions="{ exact: true }">Home</a>
+          </li>
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" routerLink="/home/phones">Phones</a>
+          </li>
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" routerLink="/home/orders">My Orders</a>
+          </li>
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" routerLink="/home/support">Support</a>
+          </li>
+          <li class="nav-item" routerLinkActive="active">
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search phones..." aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </li>
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" routerLink="/home/cart"><i class="bi bi-cart"></i> Cart</a>
+          </li>
+          <li class="nav-item" routerLinkActive="active">
+            <a (click)="onLogOutClick()" class="nav-link" href="#"><i class="bi bi-box-arrow-right"></i> LogOut</a>
+          </li>
+        </ul>
+      
+        <!-- Admin -->
+        <ul *ngIf="isAdmin" class="navbar-nav ms-auto">
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" routerLink="/admin/dashboard" routerLinkActiveOptions="{ exact: true }">Dashboard</a>
+          </li>
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" routerLink="/admin/products">Products</a>
+          </li>
+          <li class="nav-item" routerLinkActive="active">
+            <a (click)="onLogOutClick()" class="nav-link" href="#"><i class="bi bi-box-arrow-right"></i> LogOut</a>
+          </li>
+        </ul>
+      </div>
+      
+    </div>
+  </nav>
