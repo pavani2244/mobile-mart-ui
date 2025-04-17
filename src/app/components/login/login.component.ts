@@ -52,7 +52,8 @@ export class LoginComponent implements OnInit {
   
         },
         (error) => {
-          alert('Login failed.');
+          this.toastr.error('Failded to login', 'failed');
+          // alert('Login failed.');
           console.error(error);
         }
       );

@@ -1,1 +1,1 @@
-export const BACKEND_SERVER = 'https://mobimart-backend.onrender.com';
+export const BACKEND_SERVER = 'https://mobile-mart-backend.onrender.com';

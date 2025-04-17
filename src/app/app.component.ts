@@ -10,11 +10,6 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AppComponent implements OnInit {
   title = 'mobile-mart';
-  // isUserRegistration: boolean = false;
-  // onRegisterClick: boolean = false;
-  // isUserLoggined : boolean = false;
-  // currentUrl!: string;
-  
 
   constructor(
     private router: Router,
@@ -24,57 +19,7 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {      
-
-    // Subscribe to router events to get the current URL
-    // this.router.events.subscribe((event) => {
-    //   if (event instanceof NavigationEnd) {
-    //     this.currentUrl = event.url;
-    //     console.log('Current URL:', this.currentUrl);
-    //   }
-    // });
-
-    // const userData = localStorage.getItem('user');
-    // if(this.currentUrl == '/login') {
-    //   localStorage.removeItem('user');
-    //   this.isUserLoggined = false;
-    // }
-    // else if (userData && this.currentUrl !== '/login') {
-    //   // remove user data from local storage
-    //   this.isUserLoggined = true;
-    // }
-    // console.log("entered into app component");
     
   }
 
-
-  // updateUserRegistation(event: any) {
-  //   this.isUserRegistration = event;
-  //   this.onRegisterClick = false;
-  //   console.log(event);
-  // }
-  // onLoginClicked(event: any) {
-  //   this.isUserLoggined = true;
-
-  // // get the logged in user data from local storage
-  //   const userData = localStorage.getItem('user');    
-  //   if (userData) {
-  //     const user : any = JSON.parse(userData);
-  //     console.log('User data:', user);
-
-  //     if(user.user.role === 'admin') {
-  //       // route to admin page
-  //       this.router.navigate(['admin','dashboard']);
-  //     }
-  //     else {
-  //       // route to user page
-  //       this.router.navigate(['home']);
-  //     }
-
-  //   }
-  // }
-  // onRegisterUser(event: any) {
-  //   this.isUserRegistration = event;
-  //   this.onRegisterClick = true;
-  //   console.log(event);
-  // }
 }

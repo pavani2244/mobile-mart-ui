@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
     providedIn: 'root'
 })
 export class ApiService {
-    private apiUrl = 'https://mobimart-backend.onrender.com/api';
+    private apiUrl = 'https://mobile-mart-backend.onrender.com/api';
 
     constructor(private http: HttpClient) { }
 
